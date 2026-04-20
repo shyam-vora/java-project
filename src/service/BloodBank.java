@@ -90,16 +90,36 @@ public class BloodBank {
         throw new PersonNotFoundException("Receiver with ID " + id + " not found.");
     }
 
-    public void issueBlood(String bloodGroup, int units) throws InsufficientBloodStockException {
-        int availableUnits = bloodStock.getOrDefault(bloodGroup, 0);
+   public void issueBloodToReceiver(int receiverId, String bloodGroup, int units)
+        throws InsufficientBloodStockException, PersonNotFoundException {
 
-        if (availableUnits < units) {
-            throw new InsufficientBloodStockException("Not enough blood stock. Available units: " + availableUnits);
+    Receiver foundReceiver = null;
+
+    for (Receiver r : receivers) {
+        if (r.getId() == receiverId) {
+            foundReceiver = r;
+            break;
         }
-
-        bloodStock.put(bloodGroup, availableUnits - units);
-        System.out.println(units + " units of " + bloodGroup + " issued successfully.");
     }
+
+    if (foundReceiver == null) {
+        throw new PersonNotFoundException("Receiver not found. Please add receiver first.");
+    }
+
+    int availableUnits = bloodStock.getOrDefault(bloodGroup, 0);
+
+    if (availableUnits < units) {
+        throw new InsufficientBloodStockException("Not enough blood stock. Available: " + availableUnits);
+    }
+
+    bloodStock.put(bloodGroup, availableUnits - units);
+
+    // Step 5: Show details
+    System.out.println("\n Blood Issued Successfully!");
+    System.out.println("Receiver Name: " + foundReceiver.getName());
+    System.out.println("Blood Group: " + bloodGroup);
+    System.out.println("Units Given: " + units);
+}
 
     public void addBloodStock(String bloodGroup, int units) {
         int currentUnits = bloodStock.getOrDefault(bloodGroup, 0);

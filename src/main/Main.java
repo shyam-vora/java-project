@@ -1,4 +1,5 @@
 package main;
+
 import model.Donor;
 import model.Receiver;
 import service.BloodBank;
@@ -56,7 +57,8 @@ public class Main {
                         int donationUnits = sc.nextInt();
                         sc.nextLine();
 
-                        Donor donor = new Donor(donorId, donorName, donorAge, donorBloodGroup, donorPhone, donationUnits);
+                        Donor donor = new Donor(donorId, donorName, donorAge, donorBloodGroup, donorPhone,
+                                donationUnits);
                         bloodBank.addDonor(donor);
                         break;
 
@@ -86,7 +88,8 @@ public class Main {
                         System.out.print("Enter Disease: ");
                         String disease = sc.nextLine();
 
-                        Receiver receiver = new Receiver(receiverId, receiverName, receiverAge, receiverBloodGroup, receiverPhone, requiredUnits, disease);
+                        Receiver receiver = new Receiver(receiverId, receiverName, receiverAge, receiverBloodGroup,
+                                receiverPhone, requiredUnits, disease);
                         bloodBank.addReceiver(receiver);
                         break;
 
@@ -104,12 +107,14 @@ public class Main {
                         InputUtil.validateBloodGroup(searchGroup);
                         bloodBank.searchDonorByBloodGroup(searchGroup);
                         break;
-
                     case 6:
                         bloodBank.viewBloodStock();
                         break;
-
                     case 7:
+                        System.out.print("Enter Receiver ID: ");
+                        int recId = sc.nextInt();
+                        sc.nextLine();
+
                         System.out.print("Enter Blood Group to Issue: ");
                         String issueGroup = sc.nextLine().toUpperCase();
                         InputUtil.validateBloodGroup(issueGroup);
@@ -118,9 +123,8 @@ public class Main {
                         int issueUnits = sc.nextInt();
                         sc.nextLine();
 
-                        bloodBank.issueBlood(issueGroup, issueUnits);
+                        bloodBank.issueBloodToReceiver(recId, issueGroup, issueUnits);
                         break;
-
                     case 8:
                         System.out.print("Enter Blood Group: ");
                         String stockGroup = sc.nextLine().toUpperCase();
