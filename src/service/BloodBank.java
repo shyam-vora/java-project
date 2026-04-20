@@ -36,7 +36,7 @@ public class BloodBank {
     }
 
     public void addReceiver(Receiver receiver) {
-        receivers.add(receiver);++++
+        receivers.add(receiver);
         System.out.println("Receiver added successfully.");
     }
 
