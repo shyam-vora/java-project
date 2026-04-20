@@ -1,5 +1,4 @@
 package main;
-
 import model.Donor;
 import model.Receiver;
 import service.BloodBank;
@@ -7,7 +6,6 @@ import util.InputUtil;
 import exception.InvalidBloodGroupException;
 import exception.InsufficientBloodStockException;
 import exception.PersonNotFoundException;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

@@ -4,7 +4,6 @@ import model.Donor;
 import model.Receiver;
 import exception.PersonNotFoundException;
 import exception.InsufficientBloodStockException;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -37,7 +36,7 @@ public class BloodBank {
     }
 
     public void addReceiver(Receiver receiver) {
-        receivers.add(receiver);
+        receivers.add(receiver);++++
         System.out.println("Receiver added successfully.");
     }
 

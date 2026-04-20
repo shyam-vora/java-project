@@ -3,7 +3,7 @@ package model;
 public class Receiver extends Person {
     private int requiredUnits;
     private String disease;
-
+9
     public Receiver(int id, String name, int age, String bloodGroup, String phone, int requiredUnits, String disease) {
         super(id, name, age, bloodGroup, phone);
         this.requiredUnits = requiredUnits;
